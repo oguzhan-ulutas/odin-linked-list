@@ -45,6 +45,7 @@ const LinkedListFactory = () => {
     return lastNode;
   };
 
+  // Returns the node at the given index
   const at = (index) => {
     if (index >= linkedList.length) return null;
 
@@ -55,6 +56,20 @@ const LinkedListFactory = () => {
     return node;
   };
 
+  // Removes the last element from the list
+  const pop = () => {
+    let node = linkedList.Head;
+    for (let i = 2; i < linkedList.length; i++) {
+      node = node.link;
+    }
+    console.log(node.link);
+    node.link = null;
+
+    linkedList.length--;
+  };
+
+  const contains = (value) => {};
+
   return {
     linkedList,
     prepend,
@@ -63,6 +78,7 @@ const LinkedListFactory = () => {
     head,
     tail,
     at,
+    pop,
   };
 };
 
@@ -73,4 +89,6 @@ console.log(list.linkedList);
 // console.log(list.size());
 // console.log(list.head());
 // console.log(list.tail());
-console.log(list.at(0));
+// console.log(list.at(0));
+list.pop();
+console.log(list.linkedList);
