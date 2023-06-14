@@ -3,17 +3,46 @@ const LinkedListFactory = () => {
 
   const nodeCreator = (value, link = null) => ({ value, link });
 
-  const append = (value) => {
-    const node = nodeCreator(value, linkedList.Head);
-    linkedList.Head = node;
+  // Adds new node to start of the list
+  const prepend = (value) => {
+    const newNode = nodeCreator(value, linkedList.Head);
+    linkedList.Head = newNode;
     linkedList.length++;
   };
 
-  return { linkedList, append };
+  // Adds new node to end of the list
+  const append = (value) => {
+    const newNode = nodeCreator(value);
+    let lastNode = linkedList.Head;
+    for (let i = 1; i < linkedList.length; i++) {
+      lastNode = lastNode.link;
+    }
+    lastNode.link = newNode;
+    linkedList.length++;
+  };
+
+  // Returns size of the list
+  const size = () => {
+    let size = 0;
+    let nodeItem = linkedList.Head;
+
+    while (nodeItem) {
+      size++;
+      nodeItem = nodeItem.link;
+    }
+    return size;
+  };
+
+  return {
+    linkedList,
+    prepend,
+    append,
+    size,
+  };
 };
 
 const list = LinkedListFactory();
-list.append(1);
-list.append(2);
-list.append(3);
+list.prepend(1);
+list.append(5);
 console.log(list.linkedList);
+console.log(list.size());
