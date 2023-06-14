@@ -33,11 +33,25 @@ const LinkedListFactory = () => {
     return size;
   };
 
+  // Returns the first item of the list
+  const head = () => linkedList.Head;
+
+  // Returns the last item of the list
+  const tail = () => {
+    let lastNode = linkedList.Head;
+    for (let i = 1; i < linkedList.length; i++) {
+      lastNode = lastNode.link;
+    }
+    return lastNode;
+  };
+
   return {
     linkedList,
     prepend,
     append,
     size,
+    head,
+    tail,
   };
 };
 
@@ -45,4 +59,6 @@ const list = LinkedListFactory();
 list.prepend(1);
 list.append(5);
 console.log(list.linkedList);
-console.log(list.size());
+// console.log(list.size());
+// console.log(list.head());
+console.log(list.tail());
