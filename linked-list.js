@@ -45,6 +45,16 @@ const LinkedListFactory = () => {
     return lastNode;
   };
 
+  const at = (index) => {
+    if (index >= linkedList.length) return null;
+
+    let node = linkedList.Head;
+    for (let i = 0; i < index; i++) {
+      node = node.link;
+    }
+    return node;
+  };
+
   return {
     linkedList,
     prepend,
@@ -52,6 +62,7 @@ const LinkedListFactory = () => {
     size,
     head,
     tail,
+    at,
   };
 };
 
@@ -61,4 +72,5 @@ list.append(5);
 console.log(list.linkedList);
 // console.log(list.size());
 // console.log(list.head());
-console.log(list.tail());
+// console.log(list.tail());
+console.log(list.at(0));
