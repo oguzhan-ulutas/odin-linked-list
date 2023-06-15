@@ -62,13 +62,19 @@ const LinkedListFactory = () => {
     for (let i = 2; i < linkedList.length; i++) {
       node = node.link;
     }
-    console.log(node.link);
     node.link = null;
 
     linkedList.length--;
   };
 
-  const contains = (value) => {};
+  const contains = (value) => {
+    let node = linkedList.Head;
+    while (node !== null) {
+      if (node.value === value) return true;
+      node = node.link;
+    }
+    return false;
+  };
 
   return {
     linkedList,
@@ -79,6 +85,7 @@ const LinkedListFactory = () => {
     tail,
     at,
     pop,
+    contains,
   };
 };
 
@@ -90,5 +97,5 @@ console.log(list.linkedList);
 // console.log(list.head());
 // console.log(list.tail());
 // console.log(list.at(0));
-list.pop();
-console.log(list.linkedList);
+// list.pop();
+console.log(list.contains(5));
