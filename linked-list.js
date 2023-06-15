@@ -67,6 +67,7 @@ const LinkedListFactory = () => {
     linkedList.length--;
   };
 
+  // Returns true if the value in the list, returns false otherwise
   const contains = (value) => {
     let node = linkedList.Head;
     while (node !== null) {
@@ -74,6 +75,28 @@ const LinkedListFactory = () => {
       node = node.link;
     }
     return false;
+  };
+
+  // Returns the index of the node containing value, or null if not found.
+  const find = (value) => {
+    let index = 0;
+    let node = linkedList.Head;
+    while (node !== null) {
+      if (node.value === value) return index;
+      node = node.link;
+      index++;
+    }
+    return null;
+  };
+
+  const toString = () => {
+    let string = '';
+    let node = linkedList.Head;
+    while (node !== null) {
+      string += `( ${node.value} ) -> `;
+      node = node.link;
+    }
+    console.log(`${string}null`);
   };
 
   return {
@@ -86,6 +109,8 @@ const LinkedListFactory = () => {
     at,
     pop,
     contains,
+    find,
+    toString,
   };
 };
 
@@ -98,4 +123,6 @@ console.log(list.linkedList);
 // console.log(list.tail());
 // console.log(list.at(0));
 // list.pop();
-console.log(list.contains(5));
+// console.log(list.contains(5));
+// console.log(list.find(4));
+list.toString();
