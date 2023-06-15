@@ -89,6 +89,7 @@ const LinkedListFactory = () => {
     return null;
   };
 
+  // Represents linkedList objects as strings ( value ) -> ( value ) -> ( value ) -> null
   const toString = () => {
     let string = '';
     let node = linkedList.Head;
@@ -113,16 +114,3 @@ const LinkedListFactory = () => {
     toString,
   };
 };
-
-const list = LinkedListFactory();
-list.prepend(1);
-list.append(5);
-console.log(list.linkedList);
-// console.log(list.size());
-// console.log(list.head());
-// console.log(list.tail());
-// console.log(list.at(0));
-// list.pop();
-// console.log(list.contains(5));
-// console.log(list.find(4));
-list.toString();
